@@ -1,17 +1,16 @@
-const { Task } = require('../model/task.model');
 
 class TaskDetailRepository {
 
     getDetail(id) {
-        return Task.find({_id: id});
+        return id;
     }
 
     editTask(id, task) {
-        return Task.findByIdAndUpdate({_id: id}, {status: task.status, updatedBy: task.updatedBy})
+        return id
     }
 
     removeTask(id) {
-        return Task.findByIdAndDelete({_id: id});
+        return id;
     }
 }
 

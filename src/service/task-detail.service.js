@@ -1,5 +1,3 @@
-const taskDetailRepository = require('../repository/task-detail.repository')
-
 class TaskDetailService {
 
     getDetail(id) {

@@ -1,13 +1,13 @@
-const { Task } = require('../model/task.model');
+
 
 class TaskHistoryRepository {
 
     listTasks(userName) {
-        return Task.find({createdBy: userName});
+        return userName;
     }
 
     archiveTask(id) {
-        return Task.findByIdAndUpdate({_id: id}, {status: "ARCHIVED"})
+        return id
     }
 }
 
