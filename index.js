@@ -1,14 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-
+require('dotenv').config()
 const todos = require('./src/routes/todos')
 const taskDetail = require('./src/routes/task_detail')
 const taskHistory = require('./src/routes/task_history')
+
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+console.log('process.env Object ', process.env)
 
 const port = process.env.PORT || 3000;
 
