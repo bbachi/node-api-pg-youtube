@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.use('/todos', todos);
 app.use('/todos/history', taskHistory);
@@ -25,4 +25,4 @@ app.get("*", (req, res) => {
 })
 
 
-app.listen(port, () => console.log(`Express Server listening on port ${port} in Environment ${process.env.ENVIRONMENT}`))
+app.listen(port, () => console.log(`Express Server listening on port ${port}`))

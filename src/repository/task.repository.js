@@ -1,19 +1,44 @@
+const { connect } = require('../config/db.config')
+
 class TaskRepository {
 
+    db = {}
+
+    constructor() {
+        this.db = connect();
+
+        // For Development
+        this.db.sequelize.sync({ force: true }).then(() => {
+            console.log("Drop and re-sync db.");
+        });
+    }
+
     getTasks() {
-        return Task.find({})
+        return this.db.tasks.findAll();
     }
 
     createTask(task) {
-        return Task.create(task)
+        task.createdDate = new Date().toISOString();
+        task.createdAt = new Date().toISOString();
+        task.updatedAt = new Date().toISOString();
+        return this.db.tasks.create(task);
     }
 
     deleteTask(id) {
-        return Task.findByIdAndDelete({_id: id});
+        return this.db.tasks.destroy({
+            where: {
+                id: id
+            }
+        })
     }
 
     updateTask(id, task) {
-        return Task.findByIdAndUpdate({_id: id}, {status: task.status, updatedBy: task.updatedBy})
+        task.updatedAt = new Date().toISOString();
+        return this.db.tasks.update({...task}, {
+            where: {
+                id: id
+            }
+        })
     }
 }
 

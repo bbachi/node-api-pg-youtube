@@ -1,21 +1,22 @@
 const testData = require('../test_data/test-data.service')
+const taskRepository = require('../repository/task.repository')
 
 class TaskService {
 
     getTasks() {
-        return testData.getTasks
+        return taskRepository.getTasks()
     }
 
     createTask(task) {
-        return testData.createTask(task);
+        return taskRepository.createTask(task)
     }
 
     deleteTask(id) {
-        return id;
+        return taskRepository.deleteTask(id);
     }
 
     updateTask(id, task) {
-        return id;
+        return taskRepository.updateTask(id, task);
     }
 }
 
