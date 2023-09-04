@@ -40,6 +40,22 @@ class TaskRepository {
             }
         })
     }
+
+    listTasks(userName) {
+        return this.db.tasks.findAll({
+            where: {
+                createdBy: userName
+            }
+        })
+    }
+
+    archiveTask(id) {
+        return this.db.tasks.destroy({
+            where: {
+                id: id
+            }
+        })
+    }
 }
 
 module.exports = new TaskRepository()

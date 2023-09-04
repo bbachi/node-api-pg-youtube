@@ -1,13 +1,13 @@
-const taskHistoryRepository = require('../repository/task-history.repository');
+const taskRepository = require('../repository/task.repository')
 
 class TaskHistoryService {
 
     listTasks(userName) {
-        return taskHistoryRepository.listTasks(userName)
+        return taskRepository.listTasks(userName)
     }
 
     archiveTask(id) {
-        return taskHistoryRepository.archiveTask(id)
+        return taskRepository.archiveTask(id)
     }
 
 }
