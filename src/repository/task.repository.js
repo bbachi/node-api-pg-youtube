@@ -56,6 +56,31 @@ class TaskRepository {
             }
         })
     }
+
+    getDetail(id) {
+        return this.db.tasks.findOne({
+            where: {
+                id
+            }
+        })
+    }
+
+    editTask(id, task) {
+        task.updatedAt = new Date().toISOString();
+        return this.db.tasks.update({...task}, {
+            where: {
+                id: id
+            }
+        })
+    }
+
+    removeTask(id) {
+        return this.db.tasks.destroy({
+            where: {
+                id: id
+            }
+        })
+    }
 }
 
 module.exports = new TaskRepository()

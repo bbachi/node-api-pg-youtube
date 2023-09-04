@@ -1,15 +1,17 @@
+const taskRepository = require('../repository/task.repository')
+
 class TaskDetailService {
 
     getDetail(id) {
-        return taskDetailRepository.getDetail(id);
+        return taskRepository.getDetail(id);
     }
 
     editTask(id, task) {
-        return taskDetailRepository.editTask(id, task);
+        return taskRepository.editTask(id, task);
     }
 
     removeTask(id) {
-        return taskDetailRepository.removeTask(id);
+        return taskRepository.removeTask(id);
     }
 }
 
