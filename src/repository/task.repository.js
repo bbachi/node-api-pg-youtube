@@ -1,8 +1,7 @@
 const { connect } = require('../config/db.config')
 
-class TaskRepository {
 
-    db = {}
+class TaskRepository {
 
     constructor() {
         this.db = connect();

@@ -1,4 +1,3 @@
-const testData = require('../test_data/test-data.service')
 const taskRepository = require('../repository/task.repository')
 
 class TaskService {
