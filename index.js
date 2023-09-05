@@ -1,10 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 
-let envFilePath = './environments/.env';
-if(process.env.NODE_ENV) {
-    envFilePath = `./environments/.env.${process.env.NODE_ENV}`
-}
+const envFilePath = process.env.NODE_ENV 
+    ? `./environments/.env.${process.env.NODE_ENV}` 
+    : './environments/.env'
 
 require('dotenv').config({path: envFilePath})
 
