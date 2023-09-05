@@ -1,19 +1,25 @@
+const pino = require('pino');
+const transport = pino.transport({
+    target: 'pino-pretty',
+    options: { destination: 1 } // use 2 for stderr
+})
+const logger = pino(transport);
 
 class APILogger {
 
 
     info(message) {
-        console.log(`API: ${message}`);
+        logger.info(`API: ${message}`);
     }
 
     debug(message, data) {
         if(process.env.IS_DEBUG_ENABLED === 'true') {
-            console.log(`API: ${message} and data ${JSON.stringify(data)}`)
+            logger.info(`API: ${message} and data ${JSON.stringify(data)}`)
         }
     }
 
     error(err) {
-        console.error(`API Error : ${err}`)
+        logger.error(`API Error : ${err}`)
     }
 }
 
