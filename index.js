@@ -1,6 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-require('dotenv').config()
+
+let envFilePath = './environments/.env';
+if(process.env.NODE_ENV) {
+    envFilePath = `./environments/.env.${process.env.NODE_ENV}`
+}
+
+require('dotenv').config({path: envFilePath})
+
 const todos = require('./src/routes/todos')
 const taskDetail = require('./src/routes/task_detail')
 const taskHistory = require('./src/routes/task_history')
@@ -29,4 +36,4 @@ app.get("*", (req, res) => {
 })
 
 
-app.listen(port, () => logger.info(`Express Server listening on port ${port}`))
+app.listen(port, () => logger.info(`Express Server listening on port ${port} and Running in Environment ${process.env.NODE_ENV}`))
