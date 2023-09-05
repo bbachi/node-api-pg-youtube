@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const taskController = require('../controller/task.controller')
+const logger = require('../logger/api.logger')
 
 
 router.get('/tasks', async (req, res) => {
@@ -9,14 +10,14 @@ router.get('/tasks', async (req, res) => {
 })
 
 router.post('/task', async (req, res) => {
-    console.log('req.body' , req.body)
+    logger.debug('req.body' , req.body)
     const data = await taskController.createTask(req.body);
     res.json(data);
 })
 
 router.put('/task/:id', async (req, res) => {
-    console.log('id  ', req.params.id);
-    console.log('req.body ', req.body)
+    logger.debug('id  ', req.params.id);
+    logger.debug('req.body ', req.body)
     const result = await taskController.updateTask(req.params.id, req.body);
     res.json(result);
 })
@@ -28,7 +29,7 @@ router.delete('/task/', async (req, res) => {
 
 // handling default  routes
 router.get("/", (req, res) => {
-    console.log("Handling undefined routes!!!");
+    logger.info("Handling undefined routes!!!");
     res.send("Tasks route works");
 })
 

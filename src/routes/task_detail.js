@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const taskDetailController = require('../controller/task-detail.controller')
+const logger = require('../logger/api.logger')
 
 
 router.route('/:id')
@@ -19,7 +20,7 @@ router.route('/:id')
 
 // handling default  routes
 router.get("/", (req, res) => {
-    console.log("Handling default routes!!!");
+    logger.info("Handling default routes!!!");
     res.send("Tasks detail works");
 })
 

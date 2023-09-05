@@ -4,6 +4,7 @@ require('dotenv').config()
 const todos = require('./src/routes/todos')
 const taskDetail = require('./src/routes/task_detail')
 const taskHistory = require('./src/routes/task_history')
+const logger = require('./src/logger/api.logger')
 
 
 const app = express();
@@ -11,7 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-console.log('process.env Object ', process.env)
+logger.debug('process.env Object ', process.env)
 
 const port = process.env.PORT || 3000;
 
@@ -23,9 +24,9 @@ app.get('/', (req, res) => res.sendFile(process.cwd() + '/dist/index.html'))
 
 // handling undefined  routes, always define at the end
 app.get("*", (req, res) => {
-    console.log("Handling undefined routes!!!");
+    logger.info("Handling undefined routes!!!");
     res.send("Please define this route !!!");
 })
 
 
-app.listen(port, () => console.log(`Express Server listening on port ${port}`))
+app.listen(port, () => logger.info(`Express Server listening on port ${port}`))

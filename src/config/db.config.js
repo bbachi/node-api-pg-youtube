@@ -1,9 +1,10 @@
 const { sequelize, Sequelize, DataTypes, Model } = require('sequelize');
+const logger = require('../logger/api.logger')
 
 
 const connect = () => {
 
-    console.log('process.env.HOST_NAME  ', process.env.HOST_NAME)
+    logger.info('process.env.HOST_NAME  ', process.env.HOST_NAME)
 
     const hostName = process.env.HOST_NAME;
     const userName = process.env.USER_NAME;
