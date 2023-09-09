@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 logger.debug('process.env Object ', process.env)
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use('/todos', todos);
 app.use('/todos/history', taskHistory);
@@ -35,4 +35,4 @@ app.get("*", (req, res) => {
 })
 
 
-app.listen(port, () => logger.info(`Express Server listening on port ${port} and Running in Environment ${process.env.NODE_ENV}`))
+app.listen(port, () => logger.info(`Express Server listening on port ${port} and Running in Environment ${process.env.ENVIRONMENT}`))

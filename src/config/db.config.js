@@ -6,11 +6,11 @@ const connect = () => {
 
     logger.info('process.env.HOST_NAME  ', process.env.HOST_NAME)
 
-    const hostName = process.env.HOST_NAME || 'localhost';
-    const userName = process.env.USER_NAME || 'bachina';
-    const password = process.env.PASSWORD || '';
-    const database = process.env.DATABASE || 'bachina';
-    const dialect = process.env.DIALECT || 'postgres';
+    const hostName = process.env.HOST_NAME;
+    const userName = process.env.USER_NAME;
+    const password = process.env.PASSWORD;
+    const database = process.env.DATABASE;
+    const dialect = process.env.DIALECT;
 
 
     const sequelize = new Sequelize(database, userName, password, {
